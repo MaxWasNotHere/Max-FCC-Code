@@ -10,7 +10,10 @@ function telephoneCheck(str) {
       "1(xxx)xxx-xxxx",
       "(xxx)xxx-xxxx",
       "xxxxxxxxxx"
-    ];
+    ]; //must say I'm very proud of myself for this one
+    //no way can I account for all the different little rules, so if any format is know good, we can add it to the list and
+    //check if a given number fits into any of the given formats
+
     for (let i in acceptable) {
       //check every format in acceptable against arr
       let arr2 = acceptable[i].split('');

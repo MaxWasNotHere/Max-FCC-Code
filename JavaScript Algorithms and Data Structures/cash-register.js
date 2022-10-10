@@ -1,4 +1,4 @@
-function arrayToDiction(arr) {
+function arrayToDiction(arr) { //converts a array into a dictionary for ease of use in my code specifically
     let diction = {};
     for (let elem in arr) {
       let name = arr[elem][0];
@@ -37,12 +37,12 @@ function arrayToDiction(arr) {
       let value = Number(diction[denom]) * 100;//value of the bill
       let changeInDenom = Math.floor(difference / value) * value;
       
-  
+      //push appropriate amount into change, depending on cid and changeInDenom
       if (weHave > 0) {
         if (changeInDenom == weHave && changeInDenom != 0) {
           change.push([Object.keys(diction)[elem], weHave / 100])
           difference -= weHave;
-          counter ++;
+          counter ++;//for the case of exact change in drware 
         } else if (changeInDenom > weHave && changeInDenom != 0) {
           change.push([Object.keys(diction)[elem], weHave / 100])
           difference -= weHave;
@@ -60,11 +60,12 @@ function arrayToDiction(arr) {
     if (difference > 0){
       status = "INSUFFICIENT_FUNDS";
       change = [];
-    } else if (difference == 0 && counter > 0){
+    } else if (difference == 0 && counter == 9){
       status = "CLOSED"
       change = cid;
     } else if (difference == 0) {
       status = "OPEN";
     } 
+    
     return { status, change };
   }
